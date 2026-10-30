@@ -1,3 +1,5 @@
+![Banner](banner.png)
+
 # dm-data-dictionary-masker
 Masks data based on a user-provided dictionary, replacing specific values with corresponding masked values defined in the dictionary file. - Focused on Tools designed to generate or mask sensitive data with realistic-looking but meaningless values
 
