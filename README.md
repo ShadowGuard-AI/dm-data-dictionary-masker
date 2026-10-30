@@ -11,8 +11,8 @@ Masks data based on a user-provided dictionary, replacing specific values with c
 
 ## Parameters
 - `-h`: Show help message and exit
-- `--input_format`: No description provided
-- `--output_format`: No description provided
+- `--input_format`: Format of the input file (default: json)
+- `--output_format`: Format of the output file (default: json)
 
 ## License
 Copyright (c) ShadowGuardAI
