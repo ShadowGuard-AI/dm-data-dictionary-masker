@@ -69,8 +69,16 @@ def mask_data(data, dictionary):
     else:
         if data in dictionary:
             return dictionary[data]
-        else:
-            return data  # Return original value if not in dictionary
+        # Dictionary keys loaded from JSON are always strings, so a typed
+        # JSON value such as 123 could never equal its "123" key and went
+        # unmasked. Plain scalars get one string-form lookup before giving
+        # up. Booleans are excluded: str(True) is "True", and matching that
+        # against a dictionary key would be a surprise, not a mask.
+        if isinstance(data, (int, float)) and not isinstance(data, bool):
+            text_key = str(data)
+            if text_key in dictionary:
+                return dictionary[text_key]
+        return data  # Return original value if not in dictionary
 
 
 def load_input_data(input_file, input_format):
@@ -118,6 +126,9 @@ def write_output_data(data, output_file, output_format):
         output_file (str): The path to the output file.
         output_format (str): The format of the output file ('json', 'csv', 'txt').
     """
+    # Returns True only when a file was actually written. Failures used
+    # to return None on the same footing as success, and main then logged
+    # completion and exited 0 with no output file at all.
     try:
         if output_format == 'json':
             with open(output_file, 'w') as f:
@@ -126,7 +137,7 @@ def write_output_data(data, output_file, output_format):
             import csv
             if not isinstance(data, list) or not all(isinstance(item, dict) for item in data):
                 logging.error("CSV output requires a list of dictionaries.")
-                return
+                return False
             if data:  # Check if data is not empty to avoid errors if the header can't be determined.
                 keys = data[0].keys()
                 with open(output_file, 'w', newline='') as f:  # newline='' to prevent extra blank rows on Windows
@@ -135,19 +146,22 @@ def write_output_data(data, output_file, output_format):
                     writer.writerows(data)
             else:
                  logging.warning("No data to write to CSV file.")
+                 return False
         elif output_format == 'txt':
             if not isinstance(data, list):
                 logging.error("TXT output requires a list of strings.")
-                return
+                return False
             with open(output_file, 'w') as f:
                 for item in data:
                     f.write(str(item) + '\n')
         else:
             logging.error(f"Unsupported output format: {output_format}")
-            return
+            return False
 
     except Exception as e:
         logging.error(f"Error writing output data: {e}")
+        return False
+    return True
 
 def main():
     """
@@ -182,7 +196,8 @@ def main():
     masked_data = mask_data(input_data, dictionary)
 
     # Write the masked data to the output file
-    write_output_data(masked_data, args.output_file, args.output_format)
+    if not write_output_data(masked_data, args.output_file, args.output_format):
+        sys.exit(1)
 
     logging.info("Data masking complete.")
 
