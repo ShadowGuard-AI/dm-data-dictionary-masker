@@ -47,13 +47,14 @@ def load_dictionary(dictionary_file):
         return None
 
 
-def mask_data(data, dictionary):
+def mask_data(data, dictionary, counter=None):
     """
     Masks the data based on the provided dictionary.
 
     Args:
         data (any): The data to mask.
         dictionary (dict): The masking dictionary.
+        counter (list, optional): One item list incremented on each match.
 
     Returns:
         any: The masked data.
@@ -61,13 +62,15 @@ def mask_data(data, dictionary):
     if isinstance(data, dict):
         masked_data = {}
         for key, value in data.items():
-            masked_data[key] = mask_data(value, dictionary)
+            masked_data[key] = mask_data(value, dictionary, counter)
         return masked_data
     elif isinstance(data, list):
-        masked_data = [mask_data(item, dictionary) for item in data]
+        masked_data = [mask_data(item, dictionary, counter) for item in data]
         return masked_data
     else:
         if data in dictionary:
+            if counter is not None:
+                counter[0] += 1
             return dictionary[data]
         # Dictionary keys loaded from JSON are always strings, so a typed
         # JSON value such as 123 could never equal its "123" key and went
@@ -77,6 +80,8 @@ def mask_data(data, dictionary):
         if isinstance(data, (int, float)) and not isinstance(data, bool):
             text_key = str(data)
             if text_key in dictionary:
+                if counter is not None:
+                    counter[0] += 1
                 return dictionary[text_key]
         return data  # Return original value if not in dictionary
 
@@ -182,6 +187,12 @@ def main():
         logging.error(f"Invalid output format: {args.output_format}")
         sys.exit(1)
 
+    # Refuse in place output before any file is written.
+    from pathlib import Path
+    if Path(args.input_file).resolve() == Path(args.output_file).resolve():
+        logging.error("Output file is the same as the input file. Refusing to overwrite the input.")
+        sys.exit(1)
+
     # Load the masking dictionary
     dictionary = load_dictionary(args.dictionary_file)
     if dictionary is None:
@@ -193,7 +204,11 @@ def main():
         sys.exit(1)
 
     # Mask the data
-    masked_data = mask_data(input_data, dictionary)
+    counter = [0]
+    masked_data = mask_data(input_data, dictionary, counter)
+    if counter[0] == 0:
+        print("No values matched the dictionary.")
+        sys.exit(1)
 
     # Write the masked data to the output file
     if not write_output_data(masked_data, args.output_file, args.output_format):

@@ -9,6 +9,8 @@ Masks data based on a user-provided dictionary, replacing specific values with c
 ## Usage
 `./dm-data-dictionary-masker [params]`
 
+Naming the output file as the input file is refused at exit 1 before any write, including alias and symlink spellings of the same path. When no value matches the dictionary, the run prints `No values matched the dictionary.`, exits 1, and writes no output file.
+
 ## Parameters
 - `-h`: Show help message and exit
 - `--input_format`: Format of the input file (default: json)
