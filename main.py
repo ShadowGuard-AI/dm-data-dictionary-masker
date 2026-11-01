@@ -61,6 +61,9 @@ def mask_data(data, dictionary, counter=None):
     """
     if isinstance(data, dict):
         masked_data = {}
+        # Keys are never masked, only the values under them. A
+        # sensitive word sitting in a field name stays exactly as it
+        # was, at every depth of the structure.
         for key, value in data.items():
             masked_data[key] = mask_data(value, dictionary, counter)
         return masked_data
@@ -108,6 +111,10 @@ def load_input_data(input_file, input_format):
                 return list(reader)
         elif input_format == 'txt':
             with open(input_file, 'r') as f:
+                # Lines are stripped as they are loaded, so leading
+                # and trailing spaces are lost for every line, matched
+                # or not, and a blank line becomes an empty string
+                # entry that is carried into the output.
                 return [line.strip() for line in f]  # Read as a list of lines
         else:
             logging.error(f"Unsupported input format: {input_format}")
@@ -204,6 +211,10 @@ def main():
         sys.exit(1)
 
     # Mask the data
+    # The input and output formats are independent choices here, so a
+    # conversion can be asked for: JSON in, CSV out works only when
+    # the masked data is a list of flat dictionaries, and that is not
+    # learned until the write step at the end of the run.
     counter = [0]
     masked_data = mask_data(input_data, dictionary, counter)
     if counter[0] == 0:
