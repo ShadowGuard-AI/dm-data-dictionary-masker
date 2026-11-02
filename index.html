@@ -1,165 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dm Data Dictionary Masker: what it is, how it runs, where it stops</title>
-<meta name="description" content="Dm Data Dictionary Masker is one of my projects. The README in the repo is short, so this page sticks to what the files themselves show.">
-<style>
-:root {
-  --bg: #181c3a; --panel: #22284e; --ink: #eeeef6;
-  --mut: #2d3669;
-  --acc: #7eb8f7; --acc2: #f7ba7e;
-  --line: #22284e;
-}
-* { box-sizing: border-box; }
-body { margin: 0; background: var(--bg); color: var(--ink);
-  font-family: 'Palatino Linotype', Palatino, serif; line-height: 1.55; }
-code, pre, .mono { font-family: 'Menlo', monospace; }
-a { color: var(--acc2); }
-.hero { padding: 3rem 6vw 1rem; }
-.hero img.banner { width: 100%; height: auto; border: 1px solid var(--line);
-  border-radius: 10px; }
-.logo { width: 92px; height: 92px; border-radius: 18px;
-  border: 1px solid var(--line); }
-h1 { font-size: 2.4rem; margin: 0.4em 0 0.1em; }
-h2 { border-bottom: 2px solid var(--acc); padding-bottom: 0.2em;
-  margin-top: 2em; }
-.lede { font-size: 1.15rem; max-width: 62ch; }
-main { padding: 0 6vw 3rem; max-width: 1180px; margin: 0 auto; }
-.grid { display: grid; gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
-.card { background: var(--panel); border: 1px solid var(--line);
-  border-radius: 12px; padding: 1rem 1.2rem; }
-.card.pop { animation: rise 0.7s ease both; }
-@keyframes rise { from { opacity: 0; transform: translateY(14px); }
-  to { opacity: 1; transform: none; } }
-pre.code { background: #101014; color: #e8e6df; padding: 1rem 1.2rem;
-  border-radius: 12px; overflow-x: auto; font-size: 0.86rem;
-  border-left: 5px solid var(--acc); }
-table { border-collapse: collapse; width: 100%; }
-td, th { border-bottom: 1px solid var(--line); padding: 0.45rem 0.6rem;
-  text-align: left; }
-.shots { display: grid; gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
-.shots img { width: 100%; height: auto; border: 1px solid var(--line);
-  border-radius: 10px; background: #f4f1e8; }
-footer { padding: 2rem 6vw; border-top: 1px solid var(--line);
-  color: var(--mut); }
-.rail { display: flex; gap: 1.2rem; align-items: flex-start; }
-.rail nav { position: sticky; top: 1rem; min-width: 180px; }
-@media (max-width: 760px) { .rail { flex-direction: column; }
-  .rail nav { position: static; } }
-@media (prefers-reduced-motion: reduce) {
-  .card.pop { animation: none; } * { scroll-behavior: auto; } }
-</style>
-</head>
-<body class="layout-cards">
-<!-- This page exists for dm-data-dictionary-masker alone: the layout (index-cards),
-     the colors, and the type were picked for this project, not
-     shared with the other project pages. The code block below is
-     copied from the file it names, line for line. If it looks
-     plain, that is because the project is plain, and I would
-     rather the page match the project than dress it up. The one
-     thing I will not do here is oversell: what this project does
-     not do is stated on the page, not hidden from it. -->
-<header class="hero">
-  <img class="logo" src="assets/logo.png" alt="Dm Data Dictionary Masker logo">
-  <img class="banner" src="assets/banner.png" alt="">
-  <h1>Dm Data Dictionary Masker</h1>
-  <p class="mono"><a href="https://github.com/ShadowGuard-AI/dm-data-dictionary-masker">github.com/ShadowGuard-AI/dm-data-dictionary-masker</a></p>
-</header>
+<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><title>dm-data-dictionary-masker: Roman Bathhouse Strigil Hour</title>
+<style>@font-face{font-family:Cinzel;src:url("fonts/Cinzel.ttf")}@font-face{font-family:Bitter;src:url("fonts/Bitter.ttf")}
+body{background:#eee2c0;font-family:Bitter,serif;color:#191512;margin:0}main{max-width:920px;margin:0 auto;padding:28px}
+h1,h2,h3{font-family:Cinzel,serif;color:#23201c}section{background:#e2d4ac;padding:18px 22px;margin:16px 0;border:2px solid #3e5276;position:relative}
+section::before{content:"";position:absolute;left:-14px;top:18px;width:20px;height:20px;border-radius:50%;border:3px solid #a86c34;background:#eee2c0}
+.current h2{color:#8a2c36}.stamp{color:#8a2c36;font-family:Cinzel,serif}
+img{max-width:100%}button{background:#d8cba2;color:#23201c;border:2px solid #3e5276;border-radius:40% 46% 46% 40%/58% 60% 60% 58%;padding:12px 20px;margin:4px;font-family:Cinzel,serif;box-shadow:inset 0 0 0 2px #a86c34}
+button:hover{background:#e8d9b4}button:active{transform:translateY(2px)}button:focus{outline:3px double #23201c;outline-offset:2px}
+a{color:#23201c}a::before{content:"";display:inline-block;width:10px;height:10px;background:#3e5276;margin-right:7px}a:hover::before{background:#eee2c0}
+.hole{font-size:24px;font-family:Cinzel,serif;color:#8a2c36}.tablet{background:#eee2c0;border-top:3px solid #23201c;padding:10px 14px}
+pre{white-space:pre-wrap;font-family:Bitter,serif;background:#f4ecd2;padding:14px}code{font-family:Bitter,serif}.json{font-family:Bitter,serif}</style></head><body><main>
+<img src="intro-banner.png" alt="Introduction banner: a bronze strigil alone on a marble bench in slanting amber light, no name anywhere">
+<h1>dm-data-dictionary-masker: Roman Bathhouse Strigil Hour</h1>
+<p>Pages proceed like stations along a bench. Parchment is the ground, panels are parchment darkened one shade with woad edging, headings are Cinzel in iron gall, and body text is Bitter in near black. Little astrolabes, drawn here as small bronze rings beside each chapter, mark the chapters. Medieval madder singles out the chapter a visitor currently occupies and stamps the strigil mark on the plate recording a finished swap.</p>
+<img src="logo.png" alt="Logo: a bronze strigil as a shallow open curve, with the name below in woad"><img src="banner.png" alt="Wordmark banner: the full bench, the strigil in front, and the name incised once into the bench end">
+<img src="scene.svg" alt="Animated scene in three bands">
+<div><button type="button">Mask by the List</button><button type="button">Show the Bench Record</button></div>
+<h3>Only What the List Says</h3><h3>Output Is Never Input</h3><h3>No Match, No File</h3><h3>Two Formats, Both <span class="json">json</span> by Default</h3>
+<section class="current"><h2>Plate one: the job, cautiously</h2><p>A caller arrives carrying a dictionary file. Inside it, particular values sit paired with masked counterparts. Every value catalogued in it owns a defined masked counterpart, and listed values get swapped for those counterparts. Beyond the pairings the dictionary declares, the description promises no swapping at all. Unlisted values are not this program's concern, and on the question of their fate inside a mixed run this site offers no answer, for the precise reason that the README offers none. The tool is filed among its masking and generating relatives, the ones producing plausible looking stand ins that signify nothing.</p><p class="stamp">Strigil mark: a finished swap is recorded here only where the list directed it.</p></section>
+<section><h2>Plate two: install, fault flagged and untouched</h2><p><code>git clone https://github.com/ShadowGuardAI/dm-data-dictionary-masker</code></p><p class="tablet">Margin flag: the organisation inside this clone line lacks its hyphen. The fused spelling is a fault in the live record. The line above is handed over verbatim, fault flagged in this margin and fault untouched in the line. Hyphen restored, the organisation spells ShadowGuard-AI, and that restored form appears in this flag only, never inside the quoted line.</p></section>
+<section><h2>Plate three: the usage note at headline size</h2><p class="hole">Outgoing named as incoming: turned away at exit 1 ahead of any write.</p><p><code>./dm-data-dictionary-masker [params]</code></p><p>Naming the output file as the input file is refused at exit 1 before any write, including alias and symlink spellings of the same path. Plain spelling, alias spelling and symlink spelling are all caught. When no value matches the dictionary, the run prints <code>No values matched the dictionary.</code>, exits 1, and writes no output file, not even an empty one.</p></section>
+<section><h2>Plate four: the dials, and the hole beside them</h2><p>- <code>-h</code>: Show help message and exit</p><p>- <code>--input_format</code>: Format of the input file (default: json)</p><p>- <code>--output_format</code>: Format of the output file (default: json)</p><p class="hole">The hole, at matching size: print names no dial for the incoming file itself, no dial for the outgoing file itself, and no dial for the dictionary file, although the whole mechanism leans on a dictionary file and the usage note discusses an incoming and an outgoing file. A reader holding only the README cannot assemble a working invocation from it.</p><p>Invented flag names are not displayed to visitors, however helpful they would look. No flag name is invented anywhere on this page.</p></section>
+<section><h2>Plate five: the dictionary through stand ins alone</h2><p>A stand in listed value becomes its stand in counterpart, cleanly, because the list pairs the two. A stand in unlisted value is displayed next to a question this site deliberately leaves hanging: what happens to it inside a run where other values do match? The README is silent, so the question stays open. No genuine value, no genuine dictionary entry, and no path from anyone's machine appears here. Entry anatomy, the fate of unlisted values in a mixed run, whether matching forgives case, and the roster of accepted formats past the json preset are all unstated in the record.</p></section>
+<section><h2>Plate six: rights</h2><p>Copyright (c) ShadowGuardAI</p><p>The licence line above stands as printed, fault preserved: the fused organisation spelling again, with no year and nobody named. Next to it, distinct, the LICENSE particulars: the repository LICENSE file holds the MIT License; its holder is identified through a pen name, through what remains of the name reduced to one initial, and through @Epsilon0xCell, across 2025-2026. The initial is not spelled out here, and the holder line is not reproduced. Fused line and fuller document disagree in form, and the disagreement is left standing, as found.</p></section>
+<section><h2>The preserved README record</h2><pre>![Banner](banner.png)
 
-<main>
-  <section class="rail">
-    <nav aria-label="on this page">
-      <p class="mono"><a href="#run">Run it</a><br>
-      <a href="#files">The files</a><br>
-      <a href="#sheets">The sheets</a><br>
-      <a href="https://github.com/ShadowGuard-AI/dm-data-dictionary-masker">The repo</a></p>
-    </nav>
-    <div>
-      <p class="lede">Dm Data Dictionary Masker is one of my projects. The README in the repo is short, so this page sticks to what the files themselves show.</p>
-      <div class="grid">
-        <div class="card pop"><h3>What it is</h3>
-          <p>Dm Data Dictionary Masker: 5 files, 225 counted
-          lines across Python 206, Markdown 18, Text 1. One job, done in the
-          open, in files you can read.</p></div>
-        <div class="card pop"><h3>The biggest piece</h3>
-          <p><code>main.py</code> carries the most
-          lines. If the project grows, that file is where the growth
-          lands first, for better or worse.</p></div>
-        <div class="card pop"><h3>The honest gap</h3>
-          <p>No test files yet. That is the honest gap, and the roadmap in the visuals folder says what the first one should cover.</p></div>
-      </div>
-      <section id="run">
-        <h2>Run it</h2>
-        <p>The repo README has the exact commands for this one. The
-        shape is the shape for most of my projects: clone it, read the
-        top file first so you know what will happen, then run it on
-        something you do not mind breaking.</p>
-        <p class="mono">$ git clone https://github.com/ShadowGuard-AI/dm-data-dictionary-masker.git<br>$ cd dm-data-dictionary-masker</p>
-      </section>
-      
-  <section aria-label="real code">
-    <h2>The code, as it sits in the repo</h2>
-    <p>From <code>main.py</code>, line 7 on. I did
-    not tidy it for the page. What you see is what the file has.</p>
-    <pre class="code"><code>logging.basicConfig(level=logging.INFO, format=&#x27;%(asctime)s - %(levelname)s - %(message)s&#x27;)
+# dm-data-dictionary-masker
+Masks data based on a user-provided dictionary, replacing specific values with corresponding masked values defined in the dictionary file. - Focused on Tools designed to generate or mask sensitive data with realistic-looking but meaningless values
 
-def setup_argparse():
-    &quot;&quot;&quot;
-    Sets up the argument parser for the command-line interface.
-    &quot;&quot;&quot;
-    parser = argparse.ArgumentParser(description=&quot;Masks data based on a user-provided dictionary.&quot;)
-    parser.add_argument(&quot;input_file&quot;, help=&quot;The input file containing the data to mask (e.g., JSON, CSV).&quot;)
-    parser.add_argument(&quot;dictionary_file&quot;, help=&quot;The JSON file containing the masking dictionary.&quot;)
-    parser.add_argument(&quot;output_file&quot;, help=&quot;The output file to write the masked data to.&quot;)
-    parser.add_argument(&quot;--input_format&quot;, choices=[&#x27;json&#x27;, &#x27;csv&#x27;, &#x27;txt&#x27;], default=&#x27;json&#x27;, help=&quot;Format of the input file (default: json)&quot;)  # Added input format argument
-    parser.add_argument(&quot;--output_format&quot;, choices=[&#x27;json&#x27;, &#x27;csv&#x27;, &#x27;txt&#x27;], default=&#x27;json&#x27;, help=&quot;Format of the output file (default: json)&quot;) # Added output format argument
-    return parser.parse_args()
+## Install
+`git clone https://github.com/ShadowGuardAI/dm-data-dictionary-masker`
 
+## Usage
+`./dm-data-dictionary-masker [params]`
 
-def load_dictionary(dictionary_file):
-    &quot;&quot;&quot;
-    Loads the masking dictionary from a JSON file.
+Naming the output file as the input file is refused at exit 1 before any write, including alias and symlink spellings of the same path. When no value matches the dictionary, the run prints `No values matched the dictionary.`, exits 1, and writes no output file.
 
-    Args:
-        dictionary_file (str): The path to the JSON file.</code></pre>
-  </section>
-      <section id="files">
-        <h2>The files that matter</h2>
-        <table><tr><th>File</th><th>Lines</th></tr>
-        <tr><td><code>main.py</code></td><td>206</td></tr>
-        <tr><td><code>README.md</code></td><td>18</td></tr>
-        <tr><td><code>requirements.txt</code></td><td>1</td></tr>
-        <tr><td><code>banner.png</code></td><td>0</td></tr>
-        <tr><td><code>logo.png</code></td><td>0</td></tr>
-        </table>
-        <p>Names doing the work: <span class="mono">setup_argparse, load_dictionary, mask_data, load_input_data, write_output_data, main</span>.</p>
-      </section>
-      <section id="sheets">
-        <h2>Drawn by hand</h2>
-        <p>I sketch my projects on notebook paper so I have to
-        understand them well enough to draw them. The full set,
-        with the counts and how they were counted, is the
-        <a href="https://github.com/ShadowGuard-AI/dm-data-dictionary-masker/tree/main/dm-data-dictionary-masker-Visuals">dm-data-dictionary-masker-Visuals</a>
-        folder in the repo. Nothing is drawn over the binder holes.
-        That is a rule, not a style.</p>
-        <div class="shots">
-          <img src="assets/architecture.png" alt="Hand drawn architecture sheet for Dm Data Dictionary Masker">
-          <img src="assets/flowchart.png" alt="Hand drawn flowchart sheet for Dm Data Dictionary Masker">
-          <img src="assets/product-map.png" alt="Hand drawn product map sheet for Dm Data Dictionary Masker">
-        </div>
-      </section>
-    </div>
-  </section>
-</main>
-<footer>
-  <p>Dm Data Dictionary Masker is one of my projects. This page was written
-  from the repo itself on 2026-10-30: the counts are the
-  repo's counts, the code is the repo's code, and the gaps are the
-  repo's gaps.</p>
-</footer>
-</body>
-</html>
+## Parameters
+- `-h`: Show help message and exit
+- `--input_format`: Format of the input file (default: json)
+- `--output_format`: Format of the output file (default: json)
+
+## License
+Copyright (c) ShadowGuardAI</pre></section>
+</main></body></html>

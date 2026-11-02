@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 300" role="img" aria-label="The bathhouse bench in three bands: astrolabes assembling ring by ring and coming to rest on the far bench, quill pens gliding in a tallying cadence while a band of brightness traverses the tessellated floor, and abacus beads sliding on their rods, turning into alignment and holding">
+<rect width="900" height="300" fill="#6e6258"/>
+<rect x="0" y="0" width="900" height="104" fill="#7d7268"/>
+<g fill="#2e3c5e"><path d="M120 92 a52 52 0 0 1 104 0 Z"/><path d="M400 92 a52 52 0 0 1 104 0 Z"/><path d="M680 92 a52 52 0 0 1 104 0 Z"/></g>
+<rect x="40" y="86" width="820" height="14" fill="#d8d0ba"/>
+<g fill="none" stroke="#a86c34" stroke-width="3">
+<g opacity="0"><circle cx="180" cy="58" r="22"/><animate attributeName="opacity" values="0;1" begin="0s" dur="1.2s" fill="freeze"/><animateTransform attributeName="transform" type="translate" values="0 -14; 0 0" begin="0s" dur="1.2s" fill="freeze"/></g>
+<g opacity="0"><circle cx="180" cy="58" r="13"/><animate attributeName="opacity" values="0;1" begin="1.4s" dur="1.2s" fill="freeze"/><animateTransform attributeName="transform" type="translate" values="0 -12; 0 0" begin="1.4s" dur="1.2s" fill="freeze"/></g>
+<g opacity="0"><circle cx="430" cy="58" r="22"/><animate attributeName="opacity" values="0;1" begin="2.8s" dur="1.2s" fill="freeze"/><animateTransform attributeName="transform" type="translate" values="0 -14; 0 0" begin="2.8s" dur="1.2s" fill="freeze"/></g>
+<g opacity="0"><circle cx="430" cy="58" r="13"/><animate attributeName="opacity" values="0;1" begin="4.2s" dur="1.2s" fill="freeze"/><animateTransform attributeName="transform" type="translate" values="0 -12; 0 0" begin="4.2s" dur="1.2s" fill="freeze"/></g>
+<g opacity="0"><circle cx="680" cy="58" r="22"/><animate attributeName="opacity" values="0;1" begin="5.6s" dur="1.2s" fill="freeze"/><animateTransform attributeName="transform" type="translate" values="0 -14; 0 0" begin="5.6s" dur="1.2s" fill="freeze"/></g></g>
+<rect x="0" y="104" width="900" height="96" fill="#eee2c0"/>
+<g stroke="#23201c" stroke-width="2"><line x1="70" y1="128" x2="150" y2="112"/><line x1="230" y1="128" x2="310" y2="112"/><line x1="390" y1="128" x2="470" y2="112"/>
+<animateTransform attributeName="transform" type="translate" values="0 0; 14 0; 14 0; 28 0; 28 0; 0 0" keyTimes="0;0.18;0.4;0.58;0.8;1" dur="9s" repeatCount="indefinite"/></g>
+<g fill="#f7eeda"><path d="M150 112 l16 -8 -4 14 Z"/><path d="M310 112 l16 -8 -4 14 Z"/><path d="M470 112 l16 -8 -4 14 Z"/></g>
+<g><rect x="0" y="146" width="900" height="54" fill="#c9bc96"/><g fill="#eee2c0"><rect x="20" y="156" width="24" height="16"/><rect x="70" y="156" width="24" height="16"/><rect x="120" y="156" width="24" height="16"/><rect x="170" y="156" width="24" height="16"/><rect x="220" y="156" width="24" height="16"/><rect x="270" y="156" width="24" height="16"/><rect x="320" y="156" width="24" height="16"/><rect x="370" y="156" width="24" height="16"/><rect x="420" y="156" width="24" height="16"/><rect x="470" y="156" width="24" height="16"/><rect x="520" y="156" width="24" height="16"/><rect x="570" y="156" width="24" height="16"/><rect x="620" y="156" width="24" height="16"/><rect x="670" y="156" width="24" height="16"/><rect x="720" y="156" width="24" height="16"/><rect x="770" y="156" width="24" height="16"/><rect x="820" y="156" width="24" height="16"/></g>
+<rect x="-180" y="146" width="170" height="54" fill="#ffd873" opacity="0.4"><animate attributeName="x" values="-180; 900" dur="16s" repeatCount="indefinite"/></rect></g>
+<rect x="0" y="200" width="900" height="100" fill="#3e5276"/>
+<g stroke="#eee2c0" stroke-width="3"><line x1="30" y1="228" x2="870" y2="228"/><line x1="30" y1="262" x2="870" y2="262"/></g>
+<g fill="#8a2c36"><ellipse cx="90" cy="228" rx="15" ry="10"><animate attributeName="cx" values="90; 210; 210" keyTimes="0;0.35;1" dur="10s" repeatCount="indefinite"/></ellipse><ellipse cx="300" cy="228" rx="15" ry="10"><animate attributeName="cx" values="300; 430; 430" keyTimes="0;0.5;1" dur="12s" repeatCount="indefinite"/></ellipse><ellipse cx="560" cy="262" rx="15" ry="10"><animate attributeName="cx" values="560; 690; 690" keyTimes="0;0.4;1" dur="11s" repeatCount="indefinite"/></ellipse><ellipse cx="150" cy="262" rx="15" ry="10"><animate attributeName="cx" values="150; 260; 260" keyTimes="0;0.45;1" dur="13s" repeatCount="indefinite"/></ellipse></g>
+<g fill="none" stroke="#a86c34" stroke-width="4"><path d="M620 236 q60 26 130 4"/></g>
+</svg>
