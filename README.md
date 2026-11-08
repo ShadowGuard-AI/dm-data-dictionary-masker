@@ -18,12 +18,12 @@ Masks data based on a user-provided dictionary, replacing specific values with c
 ![Major separator](sep-heavy.svg)
 
 ## Install
-`git clone https://github.com/ShadowGuardAI/dm-data-dictionary-masker`
+`git clone https://github.com/ShadowGuard-AI/dm-data-dictionary-masker`
 
 ![Minor separator](sep-light.svg)
 
 ## Usage
-`./dm-data-dictionary-masker [params]`
+`python3 main.py input_file dictionary_file output_file [options]`
 
 Naming the output file as the input file is refused at exit 1 before any write, including alias and symlink spellings of the same path. When no value matches the dictionary, the run prints `No values matched the dictionary.`, exits 1, and writes no output file.
 
@@ -43,7 +43,7 @@ Naming the output file as the input file is refused at exit 1 before any write, 
 ![Minor separator](sep-light.svg)
 
 ## License
-Copyright (c) ShadowGuardAI
+This project is released under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ![Major separator](sep-heavy.svg)
 
